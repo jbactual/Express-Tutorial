@@ -1,0 +1,44 @@
+<h1>
+    Response methods
+</h1>
+<p>
+    The methods on the response object (res) in the following table can send a response to the client, and terminate the
+    request-response cycle. If none of these methods are called from a route handler, the client request will be left
+    hanging.
+</p>
+<h4>
+    Method Description
+</h4>
+<ul>
+    <li>
+        res.download() Prompt a file to be downloaded.
+    </li>
+    <li>
+        res.end() End the response process.
+    </li>
+    <li>
+        res.json() Send a JSON response.
+    </li>
+    <li>
+        res.jsonp() Send a JSON response with JSONP support.
+    </li>
+    <li>
+        res.redirect() Redirect a request.
+    </li>
+    <li>
+        res.render() Render a view template.
+    </li>
+    <li>
+        res.send() Send a response of various types.
+    </li>
+    <li>
+        res.sendFile() Send a file as an octet stream.
+    </li>
+    <li>
+        res.sendStatus() Set the response status code and send its string representation as the response body.
+    </li>
+    <li>
+        res.status(404).send("Sorry can't find that!")
+    </li>
+
+</ul>
