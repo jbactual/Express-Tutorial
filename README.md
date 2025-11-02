@@ -39,12 +39,12 @@ This file defines the connection parameters for your database.
 ```
 
 ### Example (PostgreSQL)
-
+```
 {
 "db_type": "postgres",
 "db_dsn": "user=postgres password=root dbname=app_db host=localhost sslmode=disable"
 }
-
+```
 ## 💻 Usage and Commands
 
 To run the tool, you can either use `go run db_migrator.go` or compile it into an executable (e.g., `db_migrator.exe`) and place it on your system path.
