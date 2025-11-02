@@ -4,7 +4,7 @@ This is a lightweight, file-based database migration tool written in Go. It mana
 
 This tool is designed to be executed from the root directory of your project, where it expects to find its configuration and the migrations folder.
 
-# 🚀 Key Features
+## 🚀 Key Features
 
 - Configuration via JSON: Database connection settings are read from a single, mandatory file (`migrator.json`).
 
@@ -16,7 +16,7 @@ This tool is designed to be executed from the root directory of your project, wh
 
 - Flexible Database Support: Supports SQLite, PostgreSQL, and MySQL via standard Go database/sql drivers.
 
-# ⚙️ Configuration
+## ⚙️ Configuration
 
 The tool must be executed from a directory containing a file named migrator.json. It uses the Current Working Directory (CWD) to locate this file and the `migrations` folder.
 
@@ -24,31 +24,12 @@ The tool must be executed from a directory containing a file named migrator.json
 
 This file defines the connection parameters for your database.
 
-Key
+| Key     | Type   | Description                                                | Example Values                                                       |
+| ------- | ------ | ---------------------------------------------------------- | -------------------------------------------------------------------- |
+| db_type | string | The database driver name.                                  | `"sqlite3"`, `"postgres"`, `"mysql"`                                 |
+| db_dsn  | string | The Data Source Name (connection string) for the database. | `"app.db"` (SQLite), `"user=app dbname=prod sslmode=disable"` (Postgres) |
 
-Type
-
-Description
-
-Example Values
-
-db_type
-
-string
-
-The database driver name.
-
-"sqlite3", "postgres", "mysql"
-
-db_dsn
-
-string
-
-The Data Source Name (connection string) for the database.
-
-"app.db" (SQLite), "user=app dbname=prod sslmode=disable" (Postgres)
-
-## Example (SQLite)
+### Example (SQLite)
 
 ```
 {
@@ -57,14 +38,14 @@ The Data Source Name (connection string) for the database.
 }
 ```
 
-## Example (PostgreSQL)
+### Example (PostgreSQL)
 
 {
 "db_type": "postgres",
 "db_dsn": "user=postgres password=root dbname=app_db host=localhost sslmode=disable"
 }
 
-# 💻 Usage and Commands
+## 💻 Usage and Commands
 
 To run the tool, you can either use `go run db_migrator.go` or compile it into an executable (e.g., `db_migrator.exe`) and place it on your system path.
 
@@ -77,25 +58,21 @@ All commands should be executed from the root project directory.
 | `db_migrator up`            | Runs all pending migrations.                                                                                               |
 | `db_migrator up <n>`        | Runs the next <n> pending migrations.                                                                                      |
 | `db_migrator down`          | Rolls back the last applied migration.                                                                                     |
-| db_migrator down <n>        | Rolls back the last <n> applied migrations.                                                                                |
-| db_migrator status          | Prints the status (APPLIED or PENDING) of all migration files found in the migrations folder.                              |
+| `db_migrator down <n>`        | Rolls back the last <n> applied migrations.                                                                                |
+| `db_migrator status`          | Prints the status (APPLIED or PENDING) of all migration files found in the migrations folder.                              |
 
 ## Workflow Example
 
 1. Prepare the directory and database:
 
 ```
-
 go run db_migrator.go init
-
 ```
 
 2. Create a new migration:
 
 ```
-
 go run db_migrator.go create create_users_table
-
 ```
 
 (This creates `migrations/001_create_users_table.up.sql` and `.down.sql`)
@@ -105,15 +82,11 @@ go run db_migrator.go create create_users_table
 4. Apply the migration:
 
 ```
-
 go run db_migrator.go up
-
 ```
 
 5. Check status:
 
 ```
-
 go run db_migrator.go status
-
 ```
